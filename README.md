@@ -12,6 +12,9 @@ This is as part of the recruitment process at Telkomsel x BCG.
 - When song is being played, there is indicator in the list item that song is being played
 - Keep playing song if new search is performed
 
+![Screens](https://gifyu.com/image/o26L)
+
+
 ## Requirements
 
 - Xcode 12.4
