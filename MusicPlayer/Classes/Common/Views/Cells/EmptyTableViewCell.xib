@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="328" id="KGk-i7-Jjw" customClass="EmptyTableViewCell" customModule="MusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6W-Zb-Y3M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Pencarian tidak ditemukan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOi-VA-I15">
+                                <rect key="frame" x="21" y="236" width="278" height="16.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noResult" translatesAutoresizingMaskIntoConstraints="NO" id="Jej-U1-but">
+                                <rect key="frame" x="40" y="20" width="240" height="208"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="6JF-0o-4NX"/>
+                                    <constraint firstAttribute="height" constant="208" id="8t6-3W-Mie"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jej-U1-but" firstAttribute="centerX" secondItem="y6W-Zb-Y3M" secondAttribute="centerX" id="5IA-hU-pLG"/>
+                            <constraint firstItem="Jej-U1-but" firstAttribute="centerY" secondItem="y6W-Zb-Y3M" secondAttribute="centerY" constant="-40" id="Dkp-xZ-MIa"/>
+                            <constraint firstItem="IOi-VA-I15" firstAttribute="top" secondItem="Jej-U1-but" secondAttribute="bottom" constant="8" id="GLp-s7-rdc"/>
+                            <constraint firstAttribute="trailing" secondItem="IOi-VA-I15" secondAttribute="trailing" constant="21" id="OnM-AN-JzB"/>
+                            <constraint firstItem="IOi-VA-I15" firstAttribute="leading" secondItem="y6W-Zb-Y3M" secondAttribute="leading" constant="21" id="yNq-h4-dhE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="y6W-Zb-Y3M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6M4-Eq-QFe"/>
+                    <constraint firstAttribute="trailing" secondItem="y6W-Zb-Y3M" secondAttribute="trailing" id="EJ9-pt-3ag"/>
+                    <constraint firstAttribute="bottom" secondItem="y6W-Zb-Y3M" secondAttribute="bottom" id="adm-fd-he4"/>
+                    <constraint firstItem="y6W-Zb-Y3M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fSa-Ik-2yr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="infoImageView" destination="Jej-U1-but" id="jYh-Ah-2TZ"/>
+                <outlet property="infoLabel" destination="IOi-VA-I15" id="xmZ-Eu-XPg"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="238.39285714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="noResult" width="240" height="208"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
