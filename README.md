@@ -12,7 +12,9 @@ This is as part of the recruitment process at Telkomsel x BCG.
 - When song is being played, there is indicator in the list item that song is being played
 - Keep playing song if new search is performed
 
-![Screens](https://gifyu.com/image/o26L)
+
+![Screen-Recording-2021-05-30-at-2](https://user-images.githubusercontent.com/4274589/120111197-377d9200-c19b-11eb-888c-387f4ab1a516.gif)
+
 
 
 ## Requirements
