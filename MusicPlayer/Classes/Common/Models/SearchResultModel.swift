@@ -21,6 +21,7 @@ struct SearchResultModel: Codable {
     let artistName: String?
     let artworkUrl100: String?
     let collectionName: String?
+    var isPlaying: Bool?
 }
 
 struct SearchMusicContentCellModel {

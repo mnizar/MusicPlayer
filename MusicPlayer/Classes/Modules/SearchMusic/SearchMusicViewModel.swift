@@ -60,6 +60,28 @@ class SearchMusicViewModel: SearchMusicViewModelProtocol {
             getSearchResult(keyword: text)
         }
     }
+    
+    func updateNowPlaying(for songId:Int) {
+        if var cellModels = dataSource.value, cellModels.count > 0 {
+            if let index = cellModels.firstIndex(where: {($0.data as? SearchResultModel)?.trackId == songId}),
+               var searchResultModel = cellModels.item(at: index)?.data as? SearchResultModel   {
+                searchResultModel.isPlaying = true
+                cellModels[index].data = searchResultModel
+                self.dataSource.value = cellModels
+            }
+        }
+    }
+
+    func updateStopPlaying(for songId:Int) {
+        if var cellModels = dataSource.value, cellModels.count > 0 {
+            if let index = cellModels.firstIndex(where: {($0.data as? SearchResultModel)?.trackId == songId}),
+               var searchResultModel = cellModels.item(at: index)?.data as? SearchResultModel   {
+                searchResultModel.isPlaying = false
+                cellModels[index].data = searchResultModel
+                self.dataSource.value = cellModels
+            }
+        }
+    }
 }
 
 // MARK: get API
@@ -70,7 +92,6 @@ extension SearchMusicViewModel {
         searchNetworkProvider.searchSong(with: keyword, completion: { result in
             switch result {
             case .success(let searchResultResponseModel):
-                print("success data :\(searchResultResponseModel)")
                 if let searchResults = searchResultResponseModel.results, searchResults.count > 0 {
                     self.buildSearchResultContentCellModels(searchResults)
                 } else {

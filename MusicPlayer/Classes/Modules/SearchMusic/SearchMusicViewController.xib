@@ -71,9 +71,9 @@
                                 <outlet property="delegate" destination="-1" id="aLI-Ek-FGa"/>
                             </connections>
                         </tableView>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J75-OK-gQH" customClass="PlayerBottomView" customModule="MusicPlayer" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J75-OK-gQH" customClass="PlayerBottomView" customModule="MusicPlayer" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="714" width="414" height="60"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="rwg-2E-R8h"/>
                             </constraints>

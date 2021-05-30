@@ -22,9 +22,14 @@ class SearchMusicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        observeNotifications()
         setupTableView()
         setupUI()
         bindViewModel()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK:- UI
@@ -65,12 +70,46 @@ class SearchMusicViewController: UIViewController {
     
     private func bindViewModel() {
         
-        viewModel.dataSource.bind { (_) in
+        viewModel.dataSource.bind { [weak self] (_) in
             // Perform table updates on UI thread
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
          }
+        
+        playerView.currentState.bind({ [weak self] currentState in
+            // Perform table updates on UI thread
+            if (currentState == .stop || currentState == .pause) {
+                if let currentPlay = self?.playerView.currentPlay {
+                    self?.viewModel.updateStopPlaying(for: currentPlay.id)
+                }
+            } else if (currentState == .playing) {
+                if let currentPlay = self?.playerView.currentPlay {
+                    self?.viewModel.updateNowPlaying(for: currentPlay.id)
+                }
+            }
+         })
+    }
+    
+    private func observeNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(audioDidEnd(notification:)), name:
+        NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+    }
+    
+    @objc func audioDidEnd(notification: NSNotification) {
+        playerView.stopSong()
+    }
+    
+    private func showPlayerView(isShow:Bool) {
+        DispatchQueue.main.async {
+            if (isShow) {
+                self.playerViewHeightConstraint.constant = 60
+            } else {
+                self.playerViewHeightConstraint.constant = 0
+                self.playerView.stopSong()
+            }
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -124,6 +163,22 @@ extension SearchMusicViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cellModel = viewModel.cellModelAtIndex(indexPath.row), let data = cellModel.data as? SearchResultModel {
+            if let songId = data.trackId, let songName = data.trackName, let streamUrl = data.previewUrl {
+                let selectedSong = SongPlayerModel(id: songId, name: songName, imageUrl: data.artworkUrl100 ?? "", streamUrl: streamUrl)
+                if let currentPlay = playerView.currentPlay {
+                    viewModel.updateStopPlaying(for: currentPlay.id)
+                }
+                
+                playerView.playSong(model: selectedSong)
+                showPlayerView(isShow: true)
+            }
+            
+        }
+        
     }
 }
 

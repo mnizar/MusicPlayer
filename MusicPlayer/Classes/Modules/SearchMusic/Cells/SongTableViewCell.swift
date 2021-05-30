@@ -17,6 +17,8 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var containerImageArtView: UIView!
     @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var nowPlayingImageView: UIImageView!
+    @IBOutlet weak var nowPlayingWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +33,6 @@ class SongTableViewCell: UITableViewCell {
         
         separatorHeightConstraint.constant = 0.5
         containerView.layoutIfNeeded()
-        
-        albumArtImageView.setImage("https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/7a/f5/26/7af526b3-ff21-43d3-7e03-a25f7011b715/source/100x100bb.jpg")
     }
     
     func configureWithCellModel(_ cellModel: SearchMusicContentCellModel?) {
@@ -42,6 +42,14 @@ class SongTableViewCell: UITableViewCell {
             artistameLabel.text = searchResultModel.artistName
             albumNameLabel.text = searchResultModel.collectionName
             albumArtImageView.setImage(searchResultModel.artworkUrl100 ?? "")
+            if ((searchResultModel.isPlaying ?? false) == true) {
+                
+                nowPlayingImageView.startAnimatedImages(imageName: "nowPlaying")
+                nowPlayingWidthConstraint.constant = 32.0
+            } else {
+                nowPlayingImageView.stopAnimating()
+                nowPlayingWidthConstraint.constant = 0
+            }
         }
     }
 }

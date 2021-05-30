@@ -13,8 +13,8 @@
             <connections>
                 <outlet property="albumArtImageView" destination="cUy-7E-GlY" id="Ive-Lu-dc2"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="kry-Ne-iMX"/>
-                <outlet property="cornerImageArtView" destination="zKC-9X-J7z" id="3Mw-VK-kvz"/>
-                <outlet property="cornerView" destination="Xqq-rk-OH0" id="l7A-I7-kyx"/>
+                <outlet property="cornerImageArtView" destination="zKC-9X-J7z" id="zf2-Ns-J0P"/>
+                <outlet property="cornerView" destination="Xqq-rk-OH0" id="2OG-UW-rp6"/>
                 <outlet property="playPauseButton" destination="L3z-tw-QCQ" id="TMb-zc-yB5"/>
                 <outlet property="shadowImageArtView" destination="u4V-yQ-HZ4" id="ihr-b0-DC1"/>
                 <outlet property="songNameLabel" destination="t3T-zF-Q0p" id="SwU-be-2cP"/>
@@ -25,9 +25,16 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xqq-rk-OH0">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xqq-rk-OH0">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Arm-Fi-ckH">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Dhc-fc-yx6"/>
+                            </constraints>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4V-yQ-HZ4">
                             <rect key="frame" x="16" y="5" width="50" height="50"/>
                             <subviews>
@@ -79,11 +86,13 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="L3z-tw-QCQ" secondAttribute="trailing" constant="16" id="40l-b5-8sX"/>
-                        <constraint firstAttribute="height" constant="60" id="8VB-4i-TYN"/>
                         <constraint firstItem="t3T-zF-Q0p" firstAttribute="centerY" secondItem="u4V-yQ-HZ4" secondAttribute="centerY" id="J8e-O9-imn"/>
                         <constraint firstItem="u4V-yQ-HZ4" firstAttribute="centerY" secondItem="Xqq-rk-OH0" secondAttribute="centerY" id="al1-ND-Xmg"/>
+                        <constraint firstItem="Arm-Fi-ckH" firstAttribute="top" secondItem="Xqq-rk-OH0" secondAttribute="top" id="eJX-iv-Wwk"/>
                         <constraint firstItem="t3T-zF-Q0p" firstAttribute="leading" secondItem="u4V-yQ-HZ4" secondAttribute="trailing" constant="8" id="epD-SG-jCC"/>
+                        <constraint firstAttribute="trailing" secondItem="Arm-Fi-ckH" secondAttribute="trailing" id="hgR-fR-IdW"/>
                         <constraint firstItem="u4V-yQ-HZ4" firstAttribute="leading" secondItem="Xqq-rk-OH0" secondAttribute="leading" constant="16" id="tbj-y9-9ZK"/>
+                        <constraint firstItem="Arm-Fi-ckH" firstAttribute="leading" secondItem="Xqq-rk-OH0" secondAttribute="leading" id="vYW-Ta-5ok"/>
                         <constraint firstItem="L3z-tw-QCQ" firstAttribute="centerY" secondItem="Xqq-rk-OH0" secondAttribute="centerY" id="wfz-T7-EXC"/>
                     </constraints>
                 </view>
@@ -104,6 +113,9 @@
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
