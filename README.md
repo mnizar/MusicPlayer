@@ -1,5 +1,5 @@
 # Introduction
-This is as part of the recruitment process at 
+
 
 ## Supported Device
 - iOS 13 or later
